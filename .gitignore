@@ -1,0 +1,7 @@
+x64
+*.sln
+.vs
+
+*.vcxproj.user
+*.vcxproj.filters
+*.spv
