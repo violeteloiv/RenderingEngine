@@ -2,6 +2,7 @@
 #define __VIOLET_RENDERER_RENDERER_API_H_INCLUDED__
 
 #include "../Core/Pointer.h"
+#include "../Core/Window.h"
 
 namespace Violet
 {

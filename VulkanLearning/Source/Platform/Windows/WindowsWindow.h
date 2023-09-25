@@ -14,8 +14,8 @@ namespace Violet
 		WindowsWindow(const WindowProperties& p_Properties);
 		virtual ~WindowsWindow();
 	public:
-		uint32_t GetWidth() const override { m_Data.Width; }
-		uint32_t GetHeight() const override { m_Data.Height; }
+		uint32_t GetWidth() const override { return m_Data.Width; }
+		uint32_t GetHeight() const override { return m_Data.Height; }
 		virtual void* GetHandle() const override { return m_WindowHandle; }
 	public:
 		void OnUpdate() override;

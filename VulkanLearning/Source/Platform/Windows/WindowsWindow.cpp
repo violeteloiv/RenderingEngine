@@ -2,8 +2,6 @@
 
 #include "../../Renderer/RendererAPI.h"
 
-#include "../Vulkan/VulkanInstance.h"
-
 namespace Violet
 {
 	WindowsWindow::WindowsWindow(const WindowProperties& p_Properties)

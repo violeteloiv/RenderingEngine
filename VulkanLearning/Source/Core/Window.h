@@ -7,8 +7,6 @@
 #include "../Core/Platform.h"
 #include "../Core/Pointer.h"
 
-#include "../Renderer/Surface.h"
-
 namespace Violet
 {
 	struct WindowProperties

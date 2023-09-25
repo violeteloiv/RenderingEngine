@@ -5,34 +5,20 @@
 
 #include <vector>
 
-namespace Core
+namespace Violet
 {
 	class Application
 	{
 	public:
 		Application();
-		~Application();
+		virtual ~Application() = default;
 	public:
 		void Run();
 	private:
-		void InitializeVulkan();
-		void CleanUp();
-		void DrawFrame();
-	private:
-		void CreateLogicalDevice();
-	private:
-		void CreateSyncObjects();
-	private:
-		Violet::Ref<Violet::Window> m_Window;
-		VkDevice m_Device;
-	private:
-		VkQueue m_GraphicsQueue;
-		VkQueue m_PresentQueue;
-	private:
-		VkSemaphore m_ImageAvailableSemaphore;
-		VkSemaphore m_RenderFinishedSemaphore;
-		VkFence m_InFlightFence;
+		Ref<Window> m_Window;
 	};
+
+	Application* CreateApplication();
 }
 
 #endif // __VIOLET_CORE_APPLICATION_H__
