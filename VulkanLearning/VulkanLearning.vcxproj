@@ -24,6 +24,7 @@
     <ProjectGuid>{0113223a-a2b0-47a3-82b3-657f3db04182}</ProjectGuid>
     <RootNamespace>VulkanLearning</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>VulkanLearning</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -136,26 +137,43 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\Application.cpp" />
-    <ClCompile Include="Source\Core\QueueFamily.cpp" />
     <ClCompile Include="Source\Core\Utils.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanDebug.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanInstance.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanPhysicalDevice.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanQueueFamily.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanRendererAPI.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanSurface.cpp" />
+    <ClCompile Include="Source\Platform\Windows\WindowsExtensions.cpp" />
+    <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="Source\Renderer\GraphicsPipeline.cpp" />
     <ClCompile Include="Source\Renderer\RenderCommand.cpp" />
     <ClCompile Include="Source\Renderer\Renderer.cpp" />
+    <ClCompile Include="Source\Renderer\RendererAPI.cpp" />
     <ClCompile Include="Source\Renderer\RenderPass.cpp" />
     <ClCompile Include="Source\Renderer\SwapChain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Application.h" />
-    <ClInclude Include="Source\Core\Debug.h" />
-    <ClInclude Include="Source\Core\QueueFamily.h" />
+    <ClInclude Include="Source\Core\Platform.h" />
+    <ClInclude Include="Source\Core\Pointer.h" />
     <ClInclude Include="Source\Core\Utils.h" />
     <ClInclude Include="Source\Core\Window.h" />
-    <ClInclude Include="Source\Core\Extensions.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanDebug.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanExtensions.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanInstance.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanPhysicalDevice.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanQueueFamily.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanRendererAPI.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanSurface.h" />
+    <ClInclude Include="Source\Platform\Windows\WindowsExtensions.h" />
+    <ClInclude Include="Source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="Source\Renderer\GraphicsPipeline.h" />
     <ClInclude Include="Source\Renderer\RenderCommand.h" />
     <ClInclude Include="Source\Renderer\Renderer.h" />
+    <ClInclude Include="Source\Renderer\RendererAPI.h" />
     <ClInclude Include="Source\Renderer\RenderPass.h" />
     <ClInclude Include="Source\Renderer\SwapChain.h" />
   </ItemGroup>

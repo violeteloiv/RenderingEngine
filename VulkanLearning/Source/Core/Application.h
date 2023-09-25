@@ -15,26 +15,15 @@ namespace Core
 	public:
 		void Run();
 	private:
-		void InitializeWindow();
 		void InitializeVulkan();
-		void MainLoop();
 		void CleanUp();
 		void DrawFrame();
 	private:
-		void CreateInstance();
 		void CreateLogicalDevice();
-		void PickPhysicalDevice();
-		int RateDeviceSuitability(VkPhysicalDevice p_Device);
 	private:
 		void CreateSyncObjects();
 	private:
-		bool CheckValidationLayerSupport();
-		std::vector<const char*> GetRequiredExtensions();
-		void SetupDebugMessenger();
-	private:
-		Window* m_Window;
-		VkInstance m_Instance;
-		VkPhysicalDevice m_PhysicalDevice;
+		Violet::Ref<Violet::Window> m_Window;
 		VkDevice m_Device;
 	private:
 		VkQueue m_GraphicsQueue;

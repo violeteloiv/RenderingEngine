@@ -4,35 +4,37 @@
 #include <cstdlib>
 #include <string>
 
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
+#include "../Core/Platform.h"
+#include "../Core/Pointer.h"
 
-namespace Core
+#include "../Renderer/Surface.h"
+
+namespace Violet
 {
 	struct WindowProperties
 	{
 	public:
+		const std::string& Name;
 		const uint32_t Width;
 		const uint32_t Height;
-		const std::string& Name;
+	public:
+		WindowProperties(const std::string& p_Name = "Vulkan", uint32_t p_Width = 800, uint32_t p_Height = 600)
+			: Name(p_Name), Width(p_Width), Height(p_Height) { }
 	};
 
 	class Window
 	{
 	public:
-		Window(WindowProperties& p_WindowProps);
-		~Window();
+		virtual ~Window() = default;
 	public:
-		GLFWwindow* GetWindowPointer();
-		bool VulkanSupportsGLFWExtensions(uint32_t p_ExtensionCount, const char** p_Extensions);
-		void CreateSurface(VkInstance p_Instance);
-		VkSurfaceKHR GetSurface();
-	private:
-		void InitializeWindow();
-	private:
-		WindowProperties& m_WindowProps;
-		GLFWwindow* m_WindowPointer;
-		VkSurfaceKHR m_Surface;
+		virtual uint32_t GetWidth() const = 0;
+		virtual uint32_t GetHeight() const = 0;
+		virtual void* GetHandle() const = 0;
+	public:
+		virtual void OnUpdate() = 0;
+		virtual bool ShouldClose() = 0;
+	public:
+		static Scope<Window> Create(const WindowProperties& p_Properties = WindowProperties());
 	};
 }
  

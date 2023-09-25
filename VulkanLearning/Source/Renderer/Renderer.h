@@ -25,7 +25,7 @@ namespace Renderer
 		Renderer(Renderer& p_Other) = delete;
 		void operator=(const Renderer&) = delete;
 	public:
-		static void SetUp(VkDevice p_Device, VkPhysicalDevice p_PhysicalDevice, Core::Window* p_Window);
+		static void SetUp(VkDevice p_Device, VkPhysicalDevice p_PhysicalDevice, Violet::Ref<Violet::Window> p_Window);
 		static void Shutdown(VkDevice p_Device);
 		static VkCommandBuffer RecordCommandBuffer(uint32_t p_ImageIndex);
 		static RenderCommand GetRenderCommand();

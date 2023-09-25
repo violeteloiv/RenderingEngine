@@ -2,6 +2,11 @@
 
 #include <stdexcept>
 
+namespace Violet
+{
+	Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<RendererAPI>();
+}
+
 namespace Renderer
 {
 	RenderCommand::RenderCommand(VkDevice p_Device, VkPhysicalDevice p_PhysicalDevice, Core::Window* p_Window)

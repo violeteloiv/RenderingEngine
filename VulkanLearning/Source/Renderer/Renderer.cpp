@@ -17,7 +17,7 @@ namespace Renderer
 		return s_Renderer;
 	}
 
-	void Renderer::SetUp(VkDevice p_Device, VkPhysicalDevice p_PhysicalDevice, Core::Window* p_Window)
+	void Renderer::SetUp(VkDevice p_Device, VkPhysicalDevice p_PhysicalDevice, Violet::Ref<Violet::Window> p_Window)
 	{
 		// Create the swap chain.
 		s_SwapChain = SwapChain(p_Device, p_PhysicalDevice, p_Window);

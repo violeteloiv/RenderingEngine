@@ -9,6 +9,23 @@
 #include "../Renderer/RenderPass.h"
 #include "../Renderer/SwapChain.h"
 
+#include "../Core/Pointer.h"
+#include "../Renderer/RendererAPI.h"
+
+namespace Violet
+{
+	class RenderCommand
+	{
+	public:
+		static void Init(Ref<Window> p_Window)
+		{
+			s_RendererAPI->Init(p_Window);
+		}
+	private:
+		static Scope<RendererAPI> s_RendererAPI;
+	};
+}
+
 namespace Renderer
 {
 	class RenderCommand

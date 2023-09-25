@@ -1,5 +1,13 @@
 # To Do List (Updated 09/11/23)
 
+- [ ] Remove Platform Specific Code From API
+	- [X] Move Windows Specific GLFW Code
+		- [ ] Move Vulkan Surface Code
+			- [X] Create Renderer API
+		- [ ] Interface Window With Rest Of Program
+	- [ ] Separate Vulkan Code From API Code
+		- [ ] Breakup Application Into Submodules
+		- [ ] Create RendererAPI System
 - [ ] Clean Up Graphics Pipeline
 	- [ ] Create the Shader Submodule
 		- [ ] Compile to SPIR-V Directly From File
