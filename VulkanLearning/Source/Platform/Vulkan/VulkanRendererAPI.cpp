@@ -2,8 +2,9 @@
 
 namespace Violet
 {
-	void VulkanRendererAPI::Init(Ref<Window> p_Window)
+	void VulkanRendererAPI::Init()
 	{
-
+		VulkanAppInfo info = { "Application", 1, 0, 0 };
+		m_Instance = CreateScope<VulkanInstance>(info);
 	}
 }

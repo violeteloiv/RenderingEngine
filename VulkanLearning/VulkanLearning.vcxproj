@@ -140,7 +140,9 @@
     <ClCompile Include="Source\Core\EntryPoint.h" />
     <ClCompile Include="Source\Core\Utils.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanInstance.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanRendererAPI.cpp" />
+    <ClCompile Include="Source\Platform\Windows\WindowsExtensions.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="Source\Renderer\RendererAPI.cpp" />
   </ItemGroup>
@@ -150,7 +152,9 @@
     <ClInclude Include="Source\Core\Pointer.h" />
     <ClInclude Include="Source\Core\Utils.h" />
     <ClInclude Include="Source\Core\Window.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanInstance.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanRendererAPI.h" />
+    <ClInclude Include="Source\Platform\Windows\WindowsExtensions.h" />
     <ClInclude Include="Source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="Source\Renderer\RendererAPI.h" />
     <ClInclude Include="Source\VioletRenderer.h" />

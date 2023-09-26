@@ -5,12 +5,16 @@
 
 #include "../../Core/Window.h"
 
+#include "../Vulkan/VulkanInstance.h"
+
 namespace Violet
 {
 	class VulkanRendererAPI : public RendererAPI
 	{
 	public:
-		virtual void Init(Ref<Window> p_Window) override;
+		virtual void Init() override;
+	private:
+		Scope<VulkanInstance> m_Instance;
 	};
 }
 
