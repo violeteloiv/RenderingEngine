@@ -6,6 +6,7 @@
 #include "Core/Pointer.h"
 #include "Core/Utils.h"
 
+#include "Renderer/Renderer2D.h"
 #include "Renderer/RendererAPI.h"
 
 #endif // __VIOLET_RENDERER_H_INCLUDE__

@@ -144,6 +144,7 @@
     <ClCompile Include="Source\Platform\Vulkan\VulkanRendererAPI.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsExtensions.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="Source\Renderer\Renderer2D.cpp" />
     <ClCompile Include="Source\Renderer\RendererAPI.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="Source\Platform\Vulkan\VulkanRendererAPI.h" />
     <ClInclude Include="Source\Platform\Windows\WindowsExtensions.h" />
     <ClInclude Include="Source\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="Source\Renderer\Renderer2D.h" />
     <ClInclude Include="Source\Renderer\RendererAPI.h" />
     <ClInclude Include="Source\VioletRenderer.h" />
   </ItemGroup>

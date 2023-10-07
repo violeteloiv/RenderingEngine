@@ -5,8 +5,7 @@ class Testing : public Violet::Application
 public:
 	Testing()
 	{
-		Violet::Scope<Violet::RendererAPI> api = Violet::RendererAPI::Create();
-		api->Init();
+		Violet::Renderer2D::Init();
 	}
 
 	~Testing() = default;

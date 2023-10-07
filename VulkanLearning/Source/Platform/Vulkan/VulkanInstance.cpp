@@ -45,6 +45,6 @@ namespace Violet
 
 	VulkanInstance::~VulkanInstance()
 	{
-
+		vkDestroyInstance(m_InstanceHandle, nullptr);
 	}
 }
