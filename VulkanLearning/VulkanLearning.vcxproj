@@ -137,9 +137,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\Application.cpp" />
+    <ClCompile Include="Source\Core\Debug.cpp" />
     <ClCompile Include="Source\Core\EntryPoint.h" />
     <ClCompile Include="Source\Core\Utils.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanDebug.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanInstance.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanRendererAPI.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsExtensions.cpp" />
@@ -149,10 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\Application.h" />
+    <ClInclude Include="Source\Core\Debug.h" />
     <ClInclude Include="Source\Core\Platform.h" />
     <ClInclude Include="Source\Core\Pointer.h" />
     <ClInclude Include="Source\Core\Utils.h" />
     <ClInclude Include="Source\Core\Window.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanDebug.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanInstance.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanRendererAPI.h" />
     <ClInclude Include="Source\Platform\Windows\WindowsExtensions.h" />

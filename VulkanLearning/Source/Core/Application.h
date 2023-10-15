@@ -18,7 +18,7 @@ namespace Violet
 		Ref<Window> m_Window;
 	};
 
-	Application* CreateApplication();
+	Ref<Application> CreateApplication();
 }
 
 #endif // __VIOLET_CORE_APPLICATION_H__

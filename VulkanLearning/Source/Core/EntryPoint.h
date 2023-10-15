@@ -2,6 +2,7 @@
 #define __VIOLET_ENTRY_POINT_H_INCLUDED__
 
 #include "../Core/Platform.h"
+#include "../Core/Debug.h"
 
 #ifdef VI_PLATFORM_WINDOWS
 
@@ -9,12 +10,17 @@
 
 #include <iostream>
 
-extern Violet::Application* Violet::CreateApplication();
+extern Violet::Ref<Violet::Application> Violet::CreateApplication();
 
 int main(void)
 {
 	try {
-		Violet::Application* app = Violet::CreateApplication();
+#ifndef NDEBUG
+		Violet::Ref<Violet::Debug> debug = Violet::Debug::Create();
+		debug->Init();
+#endif
+
+		Violet::Ref<Violet::Application> app = Violet::CreateApplication();
 		app->Run();
 	}
 	catch (const std::exception& e) {

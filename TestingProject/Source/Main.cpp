@@ -11,7 +11,7 @@ public:
 	~Testing() = default;
 };
 
-Violet::Application* Violet::CreateApplication()
+Violet::Ref<Violet::Application> Violet::CreateApplication()
 {
-	return new Testing();
+	return Violet::CreateRef<Testing>();
 }

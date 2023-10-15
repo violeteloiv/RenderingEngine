@@ -10,6 +10,7 @@
 #endif
 
 #include <string>
+#include <vector>
 
 namespace Violet
 {
@@ -28,8 +29,28 @@ namespace Violet
 		~VulkanInstance();
 	public:
 		VkInstance GetHandle() { return m_InstanceHandle; }
+	public:
+		void PopulateDebugMessenger(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
+		void CreateDebugMessenger();
+	private:
+		std::vector<const char*> GetRequiredExtensions();
+		VkResult CreateDebugUtilsMessengerEXT(
+			const VkDebugUtilsMessengerCreateInfoEXT* p_CreateInfo,
+			const VkAllocationCallbacks* p_Allocator,
+			VkDebugUtilsMessengerEXT* p_DebugMessenger);
+		void DestroyDebugUtilsMessengerEXT(
+			VkDebugUtilsMessengerEXT p_DebugMessenger,
+			const VkAllocationCallbacks* p_Allocator
+		);
+		static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(
+			VkDebugUtilsMessageSeverityFlagBitsEXT p_MessageSeverity,
+			VkDebugUtilsMessageTypeFlagsEXT p_MessageType,
+			const VkDebugUtilsMessengerCallbackDataEXT* p_CallbackData,
+			void* p_UserData
+		);
 	private:
 		VkInstance m_InstanceHandle;
+		VkDebugUtilsMessengerEXT m_DebugMessenger;
 	};
 }
 
