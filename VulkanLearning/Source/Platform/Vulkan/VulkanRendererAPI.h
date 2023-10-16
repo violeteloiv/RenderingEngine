@@ -6,6 +6,7 @@
 #include "../../Core/Window.h"
 
 #include "../Vulkan/VulkanInstance.h"
+#include "../Vulkan/VulkanPhysicalDevice.h"
 
 namespace Violet
 {
@@ -14,7 +15,8 @@ namespace Violet
 	public:
 		virtual void Init() override;
 	private:
-		Scope<VulkanInstance> m_Instance;
+		Ref<VulkanInstance> m_Instance;
+		Scope<VulkanPhysicalDevice> m_PhysicalDevice;
 	};
 }
 
