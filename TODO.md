@@ -1,23 +1,24 @@
-# To Do List (Updated 09/11/23)
+# To Do List (Updated 10/17/23)
 
-- [ ] Remove Platform Specific Code From API
-	- [X] Move Windows Specific GLFW Code
-		- [ ] Move Vulkan Surface Code
-			- [X] Create Renderer API
-		- [ ] Interface Window With Rest Of Program
-	- [ ] Separate Vulkan Code From API Code
-		- [ ] Breakup Application Into Submodules
-		- [ ] Create RendererAPI System
-- [ ] Clean Up Graphics Pipeline
-	- [ ] Create the Shader Submodule
-		- [ ] Compile to SPIR-V Directly From File
-	- [ ] Dynamic States Submodule
-	- [ ] Viewport Submodule
-	- [ ] Rasterizer Submodule
-- [ ] Clean Up Render Command
-	- [ ] Abstract Away Most Of It Into Easy To Use Commands
-		- [ ] Render Start Command
-		- [ ] Render Draw Commands
-			- [ ] Draw Triangle
-			- [ ] Clear Color
-		- [ ] Render Stop Command
+- [ ] Update Code To Be API Agnostic
+  - [X] Setup
+	- [X] Create Vulkan Instance
+	- [X] Implement Validation Layers
+	- [X] Implement Physical Device
+	- [X] Implement Logical Device
+  - [ ] Presentation
+	- [ ] Create Window Surface
+	- [ ] Implement Swap Chain
+	- [ ] Implement Image Views
+  - [ ] Graphics Pipeline
+	- [ ] Create Shader Modules
+	- [ ] Implement Fixed Functions
+	- [ ] Implement Render Passes
+  - [ ] Drawing
+	- [ ] Implement Swap Chain Recreation
+	- [ ] Implement Basic DrawRect Command
+- [ ] Implement Vertex Buffers
+- [ ] Implement Uniform Buffers
+- [ ] Implement Slightly More Complex Render Commands
+  - [ ] Full DrawRect Command (size, color, position, orientation, etc)
+	- [ ] Implement Transform Matrices
