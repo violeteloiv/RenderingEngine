@@ -10,7 +10,7 @@ namespace Violet
 #ifndef NDEBUG
 		m_Instance->CreateDebugMessenger();
 #endif
-		// Setup the Vulkan Device
-		m_PhysicalDevice = CreateScope<VulkanPhysicalDevice>(m_Instance);
+		// Create the device for vulkan to use.
+		m_Device = CreateScope<VulkanLogicalDevice>(m_Instance);
 	}
 }

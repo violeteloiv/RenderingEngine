@@ -28,7 +28,9 @@ namespace Violet
 		~VulkanPhysicalDevice() = default;
 	private:
 		uint32_t RatePhysicalDevice(VkPhysicalDevice p_PhysicalDevice);
+	public:
 		QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice p_PhysicalDevice);
+		VkPhysicalDevice GetHandle() { return m_PhysicalDeviceHandle; }
 	private:
 		VkPhysicalDevice m_PhysicalDeviceHandle = VK_NULL_HANDLE;
 		Ref<VulkanInstance> m_Instance;
