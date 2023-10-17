@@ -7,8 +7,20 @@
 
 #include "../Vulkan/VulkanInstance.h"
 
+#include <optional>
+
 namespace Violet
 {
+	struct QueueFamilyIndices
+	{
+	public:
+		std::optional<uint32_t> GraphicsFamily;
+	public:
+		bool IsComplete() {
+			return GraphicsFamily.has_value();
+		}
+	};
+
 	class VulkanPhysicalDevice
 	{
 	public:
@@ -16,6 +28,7 @@ namespace Violet
 		~VulkanPhysicalDevice() = default;
 	private:
 		uint32_t RatePhysicalDevice(VkPhysicalDevice p_PhysicalDevice);
+		QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice p_PhysicalDevice);
 	private:
 		VkPhysicalDevice m_PhysicalDeviceHandle = VK_NULL_HANDLE;
 		Ref<VulkanInstance> m_Instance;

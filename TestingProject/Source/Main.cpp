@@ -1,17 +1,17 @@
 #include <VioletRenderer.h>
 
-class Testing : public Violet::Application
+class TestApplication : public Violet::Application
 {
 public:
-	Testing()
+	TestApplication()
 	{
 		Violet::Renderer2D::Init();
 	}
 
-	~Testing() = default;
+	~TestApplication() = default;
 };
 
 Violet::Ref<Violet::Application> Violet::CreateApplication()
 {
-	return Violet::CreateRef<Testing>();
+	return Violet::CreateRef<TestApplication>();
 }

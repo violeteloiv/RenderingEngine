@@ -53,6 +53,38 @@ namespace Violet
 		if (!feats.geometryShader)
 			score = 0;
 
+		// We require our device to have a specific set of queues including:
+		// - Graphics Queue
+		QueueFamilyIndices indices = FindQueueFamilies(p_PhysicalDevice);
+		if (!indices.IsComplete())
+			score = 0;
+
 		return score;
+	}
+
+	QueueFamilyIndices VulkanPhysicalDevice::FindQueueFamilies(VkPhysicalDevice p_PhysicalDevice)
+	{
+		QueueFamilyIndices indices;
+
+		uint32_t queueFamilyCount = 0;
+		vkGetPhysicalDeviceQueueFamilyProperties(p_PhysicalDevice, &queueFamilyCount, nullptr);
+
+		std::vector<VkQueueFamilyProperties> queueFamilyProps(queueFamilyCount);
+		vkGetPhysicalDeviceQueueFamilyProperties(p_PhysicalDevice, &queueFamilyCount, queueFamilyProps.data());
+
+		int i = 0;
+		for (const auto& queueFamily : queueFamilyProps)
+		{
+			// Assign the VK_QUEUE_GRAPHICS_BIT index.
+			if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
+				indices.GraphicsFamily = i;
+
+			if (indices.IsComplete())
+				break;
+
+			i++;
+		}
+
+		return indices;
 	}
 }
