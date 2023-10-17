@@ -1,6 +1,7 @@
 #include "../Vulkan/VulkanInstance.h"
 
 #include "../Vulkan/VulkanDebug.h"
+#include "../Vulkan/VulkanExtensions.h"
 
 #include <iostream>
 #include <stdexcept>
@@ -59,7 +60,7 @@ namespace Violet
 	VulkanInstance::~VulkanInstance()
 	{
 #ifndef NDEBUG
-		DestroyDebugUtilsMessengerEXT(m_DebugMessenger, nullptr);
+		DebugUtilsEXT::DestroyDebugUtilsMessenger(m_InstanceHandle, m_DebugMessenger, nullptr);
 #endif
 
 		vkDestroyInstance(m_InstanceHandle, nullptr);
@@ -85,50 +86,8 @@ namespace Violet
 		VkDebugUtilsMessengerCreateInfoEXT createInfo{};
 		PopulateDebugMessenger(createInfo);
 
-		if (CreateDebugUtilsMessengerEXT(&createInfo, nullptr, &m_DebugMessenger) != VK_SUCCESS)
+		if (DebugUtilsEXT::CreateDebugUtilsMessenger(m_InstanceHandle, &createInfo, nullptr, &m_DebugMessenger) != VK_SUCCESS)
 			throw std::runtime_error("[ERROR] Debug Messenger Not Created Successfully!");
-	}
-
-	std::vector<const char*> VulkanInstance::GetRequiredExtensions()
-	{
-		std::vector<const char*> extensions;
-
-		// Platform specific extensions.
-#ifdef VI_PLATFORM_WINDOWS
-		uint32_t glfwExtensionCount = 0;
-		const char** glfwExtensions = GetGLFWExtensions(&glfwExtensionCount);
-		for (uint32_t i = 0; i < glfwExtensionCount; i++)
-			extensions.push_back(glfwExtensions[i]);
-#endif
-
-		// Debug specific extensions.
-#ifndef NDEBUG
-		extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
-#endif
-
-		return extensions;
-	}
-
-	VkResult VulkanInstance::CreateDebugUtilsMessengerEXT(
-		const VkDebugUtilsMessengerCreateInfoEXT* p_CreateInfo,
-		const VkAllocationCallbacks* p_Allocator,
-		VkDebugUtilsMessengerEXT* p_DebugMessenger)
-	{
-		auto func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(m_InstanceHandle, "vkCreateDebugUtilsMessengerEXT");
-		if (func != nullptr)
-			return func(m_InstanceHandle, p_CreateInfo, p_Allocator, p_DebugMessenger);
-		else
-			return VK_ERROR_EXTENSION_NOT_PRESENT;
-	}
-
-	void VulkanInstance::DestroyDebugUtilsMessengerEXT(
-		VkDebugUtilsMessengerEXT p_DebugMessenger,
-		const VkAllocationCallbacks* p_Allocator
-	)
-	{
-		auto func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(m_InstanceHandle, "vkDestroyDebugUtilsMessengerEXT");
-		if (func != nullptr)
-			func(m_InstanceHandle, p_DebugMessenger, p_Allocator);
 	}
 
 	VKAPI_ATTR VkBool32 VKAPI_CALL VulkanInstance::DebugCallback(

@@ -33,16 +33,6 @@ namespace Violet
 		void PopulateDebugMessenger(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
 		void CreateDebugMessenger();
 	private:
-		std::vector<const char*> GetRequiredExtensions();
-		// TODO: Move Extension Function Creation To Different File.
-		VkResult CreateDebugUtilsMessengerEXT(
-			const VkDebugUtilsMessengerCreateInfoEXT* p_CreateInfo,
-			const VkAllocationCallbacks* p_Allocator,
-			VkDebugUtilsMessengerEXT* p_DebugMessenger);
-		void DestroyDebugUtilsMessengerEXT(
-			VkDebugUtilsMessengerEXT p_DebugMessenger,
-			const VkAllocationCallbacks* p_Allocator
-		);
 		static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(
 			VkDebugUtilsMessageSeverityFlagBitsEXT p_MessageSeverity,
 			VkDebugUtilsMessageTypeFlagsEXT p_MessageType,

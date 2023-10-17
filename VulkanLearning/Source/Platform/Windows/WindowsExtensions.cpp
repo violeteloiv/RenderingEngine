@@ -3,7 +3,6 @@
 #include <GLFW/glfw3.h>
 
 #include <vector>
-#include <vulkan/vulkan.h>
 
 namespace Violet
 {
