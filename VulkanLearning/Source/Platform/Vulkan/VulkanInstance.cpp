@@ -45,7 +45,7 @@ namespace Violet
 #ifndef NDEBUG
 		VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo{};
 
-		auto validationLayers = VulkanDebug::GetValidationLayers();
+		auto validationLayers = VulkanExtensions::GetValidationLayers();
 		createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
 		createInfo.ppEnabledLayerNames = validationLayers.data();
 

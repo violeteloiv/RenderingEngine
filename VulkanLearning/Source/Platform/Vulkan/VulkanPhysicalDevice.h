@@ -22,6 +22,13 @@ namespace Violet
 		}
 	};
 
+	struct SwapChainSupportDetails
+	{
+		VkSurfaceCapabilitiesKHR Capabilities;
+		std::vector<VkSurfaceFormatKHR> SurfaceFormats;
+		std::vector<VkPresentModeKHR> PresentationModes;
+	};
+
 	class VulkanPhysicalDevice
 	{
 	public:
@@ -31,6 +38,8 @@ namespace Violet
 		uint32_t RatePhysicalDevice(VkPhysicalDevice p_PhysicalDevice);
 	public:
 		QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice p_PhysicalDevice);
+		SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice p_PhysicalDevice);
+	public:
 		VkPhysicalDevice GetHandle() { return m_PhysicalDeviceHandle; }
 	private:
 		VkPhysicalDevice m_PhysicalDeviceHandle = VK_NULL_HANDLE;

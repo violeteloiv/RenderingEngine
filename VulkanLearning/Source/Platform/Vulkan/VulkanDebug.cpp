@@ -1,15 +1,12 @@
 #include "../Vulkan/VulkanDebug.h"
 
+#include "../Vulkan/VulkanExtensions.h"
+
 #include <iostream>
 #include <stdexcept>
 
 namespace Violet
 {
-	// Define the validation layers.
-	const std::vector<const char*> VulkanDebug::s_ValidationLayers = {
-		"VK_LAYER_KHRONOS_validation"
-	};
-
 	void VulkanDebug::Init()
 	{
 		if (!CheckValidationLayerSupport())
@@ -26,7 +23,7 @@ namespace Violet
 		vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
 
 		// Check!
-		for (const char* layerName : s_ValidationLayers)
+		for (const char* layerName : VulkanExtensions::GetValidationLayers())
 		{
 			bool layerFound = false;
 

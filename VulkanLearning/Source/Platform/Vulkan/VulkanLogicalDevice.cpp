@@ -1,6 +1,6 @@
 #include "../Vulkan/VulkanLogicalDevice.h"
 
-#include "../Vulkan/VulkanDebug.h"
+#include "../Vulkan/VulkanExtensions.h"
 
 #include <set>
 #include <stdexcept>
@@ -41,15 +41,16 @@ namespace Violet
 		// Create the logical device.
 		VkDeviceCreateInfo createInfo{};
 		createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-		createInfo.pQueueCreateInfos = queueCreateInfos.data();
 		createInfo.queueCreateInfoCount = static_cast<uint32_t>(queueCreateInfos.size());
+		createInfo.pQueueCreateInfos = queueCreateInfos.data();
 		createInfo.pEnabledFeatures = &deviceFeatures;
 
-		createInfo.enabledExtensionCount = 0;
-		createInfo.ppEnabledExtensionNames = nullptr;
+		auto deviceExtensions = VulkanExtensions::GetDeviceExtensions();
+		createInfo.enabledExtensionCount = static_cast<uint32_t>(deviceExtensions.size());
+		createInfo.ppEnabledExtensionNames = deviceExtensions.data();
 
 #ifndef NDEBUG
-		auto validationLayers = VulkanDebug::GetValidationLayers();
+		auto validationLayers = VulkanExtensions::GetValidationLayers();
 		createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
 		createInfo.ppEnabledLayerNames = validationLayers.data();
 #else

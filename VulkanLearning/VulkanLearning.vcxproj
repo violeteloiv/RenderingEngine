@@ -142,6 +142,7 @@
     <ClCompile Include="Source\Core\Utils.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanDebug.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanExtensions.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanInstance.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanLogicalDevice.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanPhysicalDevice.cpp" />

@@ -15,12 +15,8 @@ namespace Violet
 		virtual ~VulkanDebug() = default;
 	public:
 		virtual void Init();
-	public:
-		static const std::vector<const char*> GetValidationLayers() { return s_ValidationLayers; }
 	private:
 		bool CheckValidationLayerSupport();
-	private:
-		static const std::vector<const char*> s_ValidationLayers;
 	};
 }
 

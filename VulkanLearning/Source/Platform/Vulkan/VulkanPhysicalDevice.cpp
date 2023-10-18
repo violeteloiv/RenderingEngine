@@ -1,5 +1,7 @@
 #include "../Vulkan/VulkanPhysicalDevice.h"
 
+#include "../Vulkan/VulkanExtensions.h"
+
 #include <map>
 #include <stdexcept>
 #include <vector>
@@ -55,8 +57,26 @@ namespace Violet
 
 		// We require our device to have a specific set of queues including:
 		// - Graphics Queue
+		// - Presentation Queue
 		QueueFamilyIndices indices = FindQueueFamilies(p_PhysicalDevice);
 		if (!indices.IsComplete())
+			score = 0;
+
+		// We also require certain extensions to be supported included:
+		// - Swap Chain Extension
+		bool extensionsSupported = CheckDeviceExtensionSupport(p_PhysicalDevice);
+		if (!extensionsSupported)
+			score = 0;
+
+		// Our swap chain must also be adequate.
+		bool swapChainAdequate = false;
+		if (extensionsSupported)
+		{
+			SwapChainSupportDetails details = QuerySwapChainSupport(p_PhysicalDevice);
+			swapChainAdequate = !details.SurfaceFormats.empty() && !details.PresentationModes.empty();
+		}
+
+		if (!swapChainAdequate)
 			score = 0;
 
 		return score;
@@ -92,5 +112,35 @@ namespace Violet
 		}
 
 		return indices;
+	}
+
+	SwapChainSupportDetails VulkanPhysicalDevice::QuerySwapChainSupport(VkPhysicalDevice p_PhysicalDevice)
+	{
+		SwapChainSupportDetails details;
+
+		// get the surface's capabilities.
+		vkGetPhysicalDeviceSurfaceCapabilitiesKHR(p_PhysicalDevice, m_Instance->GetSurfaceHandle(), &details.Capabilities);
+
+		// Get the formats.
+		uint32_t formatCount = 0;
+		vkGetPhysicalDeviceSurfaceFormatsKHR(p_PhysicalDevice, m_Instance->GetSurfaceHandle(), &formatCount, nullptr);
+
+		if (formatCount != 0)
+		{
+			details.SurfaceFormats.resize(formatCount);
+			vkGetPhysicalDeviceSurfaceFormatsKHR(p_PhysicalDevice, m_Instance->GetSurfaceHandle(), &formatCount, details.SurfaceFormats.data());
+		}
+
+		// Get the presentation modes.
+		uint32_t presentationCount = 0;
+		vkGetPhysicalDeviceSurfacePresentModesKHR(p_PhysicalDevice, m_Instance->GetSurfaceHandle(), &presentationCount, nullptr);
+
+		if (presentationCount != 0)
+		{
+			details.PresentationModes.resize(presentationCount);
+			vkGetPhysicalDeviceSurfacePresentModesKHR(p_PhysicalDevice, m_Instance->GetSurfaceHandle(), &presentationCount, details.PresentationModes.data());
+		}
+
+		return details;
 	}
 }
