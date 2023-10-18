@@ -17,6 +17,7 @@ namespace Violet
 	public:
 		virtual ~RendererAPI() = default;
 	public:
+		virtual void PreInit(Ref<Window> p_Window) = 0;
 		virtual void Init() = 0;
 	public:
 		static API GetAPI() { return s_API; }

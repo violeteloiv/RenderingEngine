@@ -3,6 +3,10 @@
 #include "../Vulkan/VulkanDebug.h"
 #include "../Vulkan/VulkanExtensions.h"
 
+#ifdef VI_PLATFORM_WINDOWS
+#include <GLFW/glfw3.h>
+#endif
+
 #include <iostream>
 #include <stdexcept>
 
@@ -62,7 +66,8 @@ namespace Violet
 #ifndef NDEBUG
 		DebugUtilsEXT::DestroyDebugUtilsMessenger(m_InstanceHandle, m_DebugMessenger, nullptr);
 #endif
-
+		
+		vkDestroySurfaceKHR(m_InstanceHandle, m_WindowSurface, nullptr);
 		vkDestroyInstance(m_InstanceHandle, nullptr);
 	}
 
@@ -88,6 +93,12 @@ namespace Violet
 
 		if (DebugUtilsEXT::CreateDebugUtilsMessenger(m_InstanceHandle, &createInfo, nullptr, &m_DebugMessenger) != VK_SUCCESS)
 			throw std::runtime_error("[ERROR] Debug Messenger Not Created Successfully!");
+	}
+
+	void VulkanInstance::InstantiateSurface(Ref<Window> p_Window)
+	{
+		if (glfwCreateWindowSurface(m_InstanceHandle, (GLFWwindow*)p_Window->GetHandle(), nullptr, &m_WindowSurface) != VK_SUCCESS)
+			throw std::runtime_error("[ERROR] Unable To Create Window Surface!");
 	}
 
 	VKAPI_ATTR VkBool32 VKAPI_CALL VulkanInstance::DebugCallback(

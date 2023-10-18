@@ -16,6 +16,7 @@ namespace Violet
 	private:
 		VkDevice m_DeviceHandle;
 		VkQueue m_GraphicsQueueHandle;
+		VkQueue m_PresentQueueHandle;
 	private:
 		Ref<VulkanInstance> m_Instance;
 		Scope<VulkanPhysicalDevice> m_PhysicalDevice;

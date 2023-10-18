@@ -7,7 +7,7 @@
 	- [X] Implement Physical Device
 	- [X] Implement Logical Device
   - [ ] Presentation
-	- [ ] Create Window Surface
+	- [X] Create Window Surface
 	- [ ] Implement Swap Chain
 	- [ ] Implement Image Views
   - [ ] Graphics Pipeline

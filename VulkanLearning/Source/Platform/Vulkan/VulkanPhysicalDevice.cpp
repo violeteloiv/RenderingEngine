@@ -79,6 +79,12 @@ namespace Violet
 			if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
 				indices.GraphicsFamily = i;
 
+			// Check for presentation support.
+			VkBool32 presentSupport = false;
+			vkGetPhysicalDeviceSurfaceSupportKHR(p_PhysicalDevice, i, m_Instance->GetSurfaceHandle(), &presentSupport);
+			if (presentSupport)
+				indices.PresentFamily = i;
+
 			if (indices.IsComplete())
 				break;
 

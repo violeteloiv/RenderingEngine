@@ -14,8 +14,10 @@ namespace Violet
 	class VulkanRendererAPI : public RendererAPI
 	{
 	public:
+		virtual void PreInit(Ref<Window> p_Window) override;
 		virtual void Init() override;
 	private:
+		Ref<Window> m_Window;
 		Ref<VulkanInstance> m_Instance;
 		Scope<VulkanLogicalDevice> m_Device;
 	};

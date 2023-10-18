@@ -14,6 +14,7 @@ namespace Violet
 	Application::Application()
 	{
 		m_Window = Window::Create();
+		Renderer2D::PreInit(m_Window);
 	}
 
 	void Application::Run()

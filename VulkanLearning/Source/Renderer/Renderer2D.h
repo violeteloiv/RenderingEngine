@@ -11,6 +11,7 @@ namespace Violet
 		Renderer2D(Renderer2D& p_Other) = delete;
 		void operator=(const Renderer2D&) = delete;
 	public:
+		static void PreInit(Ref<Window> p_Window);
 		static void Init();
 	protected:
 		static Scope<RendererAPI> s_RendererAPI;

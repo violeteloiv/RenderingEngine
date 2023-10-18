@@ -15,9 +15,10 @@ namespace Violet
 	{
 	public:
 		std::optional<uint32_t> GraphicsFamily;
+		std::optional<uint32_t> PresentFamily;
 	public:
 		bool IsComplete() {
-			return GraphicsFamily.has_value();
+			return GraphicsFamily.has_value() && PresentFamily.has_value();
 		}
 	};
 

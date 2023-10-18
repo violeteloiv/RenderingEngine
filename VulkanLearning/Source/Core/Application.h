@@ -2,6 +2,7 @@
 #define __VIOLET_CORE_APPLICATION_H__
 
 #include "../Core/Window.h"
+#include "../Renderer/Renderer2D.h"
 
 #include <vector>
 

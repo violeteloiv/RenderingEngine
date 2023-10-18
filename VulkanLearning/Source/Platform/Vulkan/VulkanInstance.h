@@ -4,6 +4,7 @@
 #include <vulkan/vulkan.h>
 
 #include "../../Core/Platform.h"
+#include "../../Core/Window.h"
 
 #ifdef VI_PLATFORM_WINDOWS
 	#include "../Windows/WindowsExtensions.h"
@@ -29,9 +30,11 @@ namespace Violet
 		~VulkanInstance();
 	public:
 		VkInstance GetHandle() { return m_InstanceHandle; }
+		VkSurfaceKHR GetSurfaceHandle() { return m_WindowSurface; }
 	public:
 		void PopulateDebugMessenger(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
 		void CreateDebugMessenger();
+		void InstantiateSurface(Ref<Window> p_Window);
 	private:
 		static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(
 			VkDebugUtilsMessageSeverityFlagBitsEXT p_MessageSeverity,
@@ -42,6 +45,7 @@ namespace Violet
 	private:
 		VkInstance m_InstanceHandle;
 		VkDebugUtilsMessengerEXT m_DebugMessenger;
+		VkSurfaceKHR m_WindowSurface;
 	};
 }
 
