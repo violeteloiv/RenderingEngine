@@ -35,6 +35,8 @@ namespace Violet
 		VkSurfaceFormatKHR ChooseSwapSurfaceFormat(std::vector<VkSurfaceFormatKHR> p_AvailableFormats);
 		VkPresentModeKHR ChooseSwapPresentationMode(std::vector<VkPresentModeKHR> p_AvailableModes);
 		VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& p_Capabilities);
+	public:
+		void CreateImageViews();
 	private:
 		Ref<VulkanInstance> m_Instance;
 		VkPhysicalDevice m_PhysicalDevice;
@@ -42,6 +44,7 @@ namespace Violet
 	private:
 		VkSwapchainKHR m_SwapChainHandle;
 		std::vector<VkImage> m_SwapChainImages;
+		std::vector<VkImageView> m_SwapChainImageViews;
 		VkFormat m_SwapChainFormat;
 		VkExtent2D m_SwapChainExtent;
 	};

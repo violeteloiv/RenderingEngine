@@ -15,7 +15,7 @@ namespace Violet
 		VkPhysicalDevice physicalDevice = m_PhysicalDevice->GetHandle();
 
 		// Specify the queues to be created.
-		QueueFamilyIndices indices = m_PhysicalDevice->FindQueueFamilies(m_Instance, physicalDevice);
+		QueueFamilyIndices indices = VulkanPhysicalDevice::FindQueueFamilies(m_Instance, physicalDevice);
 
 		std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
 		std::set<uint32_t> uniqueQueueFamilies = { indices.GraphicsFamily.value(), indices.PresentFamily.value()};
@@ -67,6 +67,7 @@ namespace Violet
 		vkGetDeviceQueue(m_DeviceHandle, indices.PresentFamily.value(), 0, &m_PresentQueueHandle);
 
 		m_SwapChain = CreateRef<VulkanSwapChain>(m_Instance, m_DeviceHandle, m_PhysicalDevice->GetHandle());
+		m_SwapChain->CreateImageViews();
 	}
 
 	VulkanLogicalDevice::~VulkanLogicalDevice()

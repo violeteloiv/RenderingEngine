@@ -6,10 +6,10 @@
 	- [X] Implement Validation Layers
 	- [X] Implement Physical Device
 	- [X] Implement Logical Device
-  - [ ] Presentation
+  - [X] Presentation
 	- [X] Create Window Surface
-	- [ ] Implement Swap Chain
-	- [ ] Implement Image Views
+	- [X] Implement Swap Chain
+	- [X] Implement Image Views
   - [ ] Graphics Pipeline
 	- [ ] Create Shader Modules
 	- [ ] Implement Fixed Functions
