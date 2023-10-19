@@ -6,6 +6,7 @@
 #include "../../Core/Pointer.h"
 
 #include "../Vulkan/VulkanInstance.h"
+#include "../Vulkan/VulkanSwapChain.h"
 
 #include <optional>
 
@@ -22,13 +23,6 @@ namespace Violet
 		}
 	};
 
-	struct SwapChainSupportDetails
-	{
-		VkSurfaceCapabilitiesKHR Capabilities;
-		std::vector<VkSurfaceFormatKHR> SurfaceFormats;
-		std::vector<VkPresentModeKHR> PresentationModes;
-	};
-
 	class VulkanPhysicalDevice
 	{
 	public:
@@ -37,12 +31,12 @@ namespace Violet
 	private:
 		uint32_t RatePhysicalDevice(VkPhysicalDevice p_PhysicalDevice);
 	public:
-		QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice p_PhysicalDevice);
-		SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice p_PhysicalDevice);
+		static QueueFamilyIndices FindQueueFamilies(Ref<VulkanInstance> p_Instance, VkPhysicalDevice p_PhysicalDevice);
 	public:
 		VkPhysicalDevice GetHandle() { return m_PhysicalDeviceHandle; }
 	private:
 		VkPhysicalDevice m_PhysicalDeviceHandle = VK_NULL_HANDLE;
+		QueueFamilyIndices m_Indices;
 		Ref<VulkanInstance> m_Instance;
 	};
 }

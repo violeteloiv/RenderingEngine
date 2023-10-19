@@ -97,6 +97,7 @@ namespace Violet
 
 	void VulkanInstance::InstantiateSurface(Ref<Window> p_Window)
 	{
+		m_Window = p_Window;
 		if (glfwCreateWindowSurface(m_InstanceHandle, (GLFWwindow*)p_Window->GetHandle(), nullptr, &m_WindowSurface) != VK_SUCCESS)
 			throw std::runtime_error("[ERROR] Unable To Create Window Surface!");
 	}

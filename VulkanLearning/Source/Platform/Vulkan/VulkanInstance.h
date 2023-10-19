@@ -31,6 +31,7 @@ namespace Violet
 	public:
 		VkInstance GetHandle() { return m_InstanceHandle; }
 		VkSurfaceKHR GetSurfaceHandle() { return m_WindowSurface; }
+		Ref<Window> GetWindow() { return m_Window; }
 	public:
 		void PopulateDebugMessenger(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
 		void CreateDebugMessenger();
@@ -42,6 +43,8 @@ namespace Violet
 			const VkDebugUtilsMessengerCallbackDataEXT* p_CallbackData,
 			void* p_UserData
 		);
+	private:
+		Ref<Window> m_Window;
 	private:
 		VkInstance m_InstanceHandle;
 		VkDebugUtilsMessengerEXT m_DebugMessenger;

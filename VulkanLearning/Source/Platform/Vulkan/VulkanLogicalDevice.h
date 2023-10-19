@@ -5,6 +5,7 @@
 
 #include "../Vulkan/VulkanInstance.h"
 #include "../Vulkan/VulkanPhysicalDevice.h"
+#include "../Vulkan/VulkanSwapChain.h"
 
 namespace Violet
 {
@@ -20,6 +21,7 @@ namespace Violet
 	private:
 		Ref<VulkanInstance> m_Instance;
 		Scope<VulkanPhysicalDevice> m_PhysicalDevice;
+		Ref<VulkanSwapChain> m_SwapChain;
 	};
 }
 

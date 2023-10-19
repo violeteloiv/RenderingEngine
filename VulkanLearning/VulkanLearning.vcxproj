@@ -147,6 +147,7 @@
     <ClCompile Include="Source\Platform\Vulkan\VulkanLogicalDevice.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanPhysicalDevice.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanRendererAPI.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\VulkanSwapChain.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsExtensions.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="Source\Renderer\Renderer2D.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Source\Platform\Vulkan\VulkanLogicalDevice.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanPhysicalDevice.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanRendererAPI.h" />
+    <ClInclude Include="Source\Platform\Vulkan\VulkanSwapChain.h" />
     <ClInclude Include="Source\Platform\Windows\WindowsExtensions.h" />
     <ClInclude Include="Source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="Source\Renderer\Renderer2D.h" />

@@ -15,7 +15,7 @@ namespace Violet
 		VkPhysicalDevice physicalDevice = m_PhysicalDevice->GetHandle();
 
 		// Specify the queues to be created.
-		QueueFamilyIndices indices = m_PhysicalDevice->FindQueueFamilies(physicalDevice);
+		QueueFamilyIndices indices = m_PhysicalDevice->FindQueueFamilies(m_Instance, physicalDevice);
 
 		std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
 		std::set<uint32_t> uniqueQueueFamilies = { indices.GraphicsFamily.value(), indices.PresentFamily.value()};
@@ -65,10 +65,15 @@ namespace Violet
 		// Create the device queue.
 		vkGetDeviceQueue(m_DeviceHandle, indices.GraphicsFamily.value(), 0, &m_GraphicsQueueHandle);
 		vkGetDeviceQueue(m_DeviceHandle, indices.PresentFamily.value(), 0, &m_PresentQueueHandle);
+
+		m_SwapChain = CreateRef<VulkanSwapChain>(m_Instance, m_DeviceHandle, m_PhysicalDevice->GetHandle());
 	}
 
 	VulkanLogicalDevice::~VulkanLogicalDevice()
 	{
+		// Manually delete swap chain bc it's being silly lol.
+		m_SwapChain.reset();
+
 		vkDestroyDevice(m_DeviceHandle, nullptr);
 	}
 }
