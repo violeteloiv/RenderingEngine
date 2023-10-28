@@ -4,11 +4,12 @@
 #include <string>
 #include <vector>
 
-namespace Core
+namespace Violet
 {
 	namespace Utils
 	{
-		std::vector<char> ReadFile(const std::string& p_FileName);
+		std::string ReadFile(const std::string& p_FileName);
+		std::vector<std::string> SplitString(std::string& p_Source, char p_Delimeter);
 	}
 }
 

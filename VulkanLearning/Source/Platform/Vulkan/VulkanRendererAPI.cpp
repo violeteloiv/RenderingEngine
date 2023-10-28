@@ -1,5 +1,7 @@
 #include "../Vulkan/VulkanRendererAPI.h"
 
+#include "../Vulkan/Pipelines/VulkanShader.h"
+
 namespace Violet
 {
 	void VulkanRendererAPI::PreInit(Ref<Window> p_Window)
@@ -23,5 +25,7 @@ namespace Violet
 
 		// Create the device for vulkan to use.
 		m_Device = CreateScope<VulkanLogicalDevice>(m_Instance);
+
+		Scope<VulkanShader> shader = CreateScope<VulkanShader>("../VulkanLearning/Shaders/basic.glsl");
 	}
 }

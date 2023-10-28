@@ -141,6 +141,7 @@
     <ClCompile Include="Source\Core\EntryPoint.h" />
     <ClCompile Include="Source\Core\Utils.cpp" />
     <ClCompile Include="Source\Core\Window.cpp" />
+    <ClCompile Include="Source\Platform\Vulkan\Pipelines\VulkanShader.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanDebug.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanExtensions.cpp" />
     <ClCompile Include="Source\Platform\Vulkan\VulkanInstance.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Source\Core\Pointer.h" />
     <ClInclude Include="Source\Core\Utils.h" />
     <ClInclude Include="Source\Core\Window.h" />
+    <ClInclude Include="Source\Platform\Vulkan\Pipelines\VulkanShader.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanDebug.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanExtensions.h" />
     <ClInclude Include="Source\Platform\Vulkan\VulkanInstance.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="Source\VioletRenderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\basic.glsl" />
     <None Include="Shaders\compile.bat" />
     <None Include="Shaders\shader.frag" />
     <None Include="Shaders\shader.vert" />
