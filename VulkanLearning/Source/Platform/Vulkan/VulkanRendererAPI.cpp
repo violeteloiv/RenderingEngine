@@ -24,8 +24,8 @@ namespace Violet
 #endif
 
 		// Create the device for vulkan to use.
-		m_Device = CreateScope<VulkanLogicalDevice>(m_Instance);
+		m_Device = CreateRef<VulkanLogicalDevice>(m_Instance);
 
-		Scope<VulkanShader> shader = CreateScope<VulkanShader>("../VulkanLearning/Shaders/basic.glsl");
+		Scope<VulkanShader> shader = CreateScope<VulkanShader>(m_Device, "../VulkanLearning/Shaders/basic.glsl");
 	}
 }

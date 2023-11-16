@@ -19,7 +19,7 @@ namespace Violet
 	private:
 		Ref<Window> m_Window;
 		Ref<VulkanInstance> m_Instance;
-		Scope<VulkanLogicalDevice> m_Device;
+		Ref<VulkanLogicalDevice> m_Device;
 	};
 }
 
