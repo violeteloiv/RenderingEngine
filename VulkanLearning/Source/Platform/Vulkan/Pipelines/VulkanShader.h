@@ -22,7 +22,7 @@ namespace Violet
 		VkShaderModule VertexShaderModule = NULL;
 		VkShaderModule FragmentShaderModule = NULL;
 	public:
-		std::vector<VkPipelineShaderStageCreateInfo> ShaderStages;
+		VkPipelineShaderStageCreateInfo ShaderStages[];
 	};
 
 	class VulkanShader

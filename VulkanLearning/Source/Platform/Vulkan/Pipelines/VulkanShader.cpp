@@ -40,8 +40,7 @@ namespace Violet
 		fragmentShaderStageInfo.module = m_ShaderDetails.FragmentShaderModule;
 		fragmentShaderStageInfo.pName = "main";
 
-		m_ShaderDetails.ShaderStages.push_back(vertexShaderStageInfo);
-		m_ShaderDetails.ShaderStages.push_back(fragmentShaderStageInfo);
+		m_ShaderDetails.ShaderStages = { vertexShaderStageInfo, fragmentShaderStageInfo };
 	}
 
 	VulkanShader::~VulkanShader()

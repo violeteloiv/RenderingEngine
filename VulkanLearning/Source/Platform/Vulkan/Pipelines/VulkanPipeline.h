@@ -5,6 +5,8 @@
 
 #include "../../Vulkan/VulkanLogicalDevice.h"
 
+#include "../../Vulkan/Pipelines/VulkanShader.h"
+
 #include <vulkan/vulkan.h>
 
 namespace Violet
@@ -12,8 +14,10 @@ namespace Violet
 	class VulkanPipeline
 	{
 	public:
-		VulkanPipeline(Ref<VulkanLogicalDevice> p_Device);
+		VulkanPipeline(Ref<VulkanLogicalDevice> p_Device, Ref<VulkanShader> p_Shader);
 		~VulkanPipeline();
+	public:
+		void CreateRenderPass();
 	private:
 		std::vector<VkDynamicState> m_DynamicStates = {
 			VK_DYNAMIC_STATE_VIEWPORT,
@@ -21,7 +25,11 @@ namespace Violet
 		};
 	private:
 		VkPipelineLayout m_PipelineLayout;
+		VkRenderPass m_RenderPass;
+		VkPipeline m_GraphicsPipeline;
+	private:
 		Ref<VulkanLogicalDevice> m_Device;
+		Ref<VulkanShader> m_Shader;
 	};
 }
 
