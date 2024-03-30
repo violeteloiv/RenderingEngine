@@ -65,6 +65,16 @@ namespace Violet
 		vkGetSwapchainImagesKHR(p_Device, m_SwapChainHandle, &imageCount, nullptr);
 		m_SwapChainImages.resize(imageCount);
 		vkGetSwapchainImagesKHR(p_Device, m_SwapChainHandle, &imageCount, m_SwapChainImages.data());
+
+		m_Viewport.x = 0.0f;
+		m_Viewport.y = 0.0f;
+		m_Viewport.width = (float)m_SwapChainExtent.width;
+		m_Viewport.height = (float)m_SwapChainExtent.height;
+		m_Viewport.minDepth = 0.0f;
+		m_Viewport.maxDepth = 1.0f;
+
+		m_Scissor.offset = { 0, 0 };
+		m_Scissor.extent = m_SwapChainExtent;
 	}
 
 	VulkanSwapChain::~VulkanSwapChain()

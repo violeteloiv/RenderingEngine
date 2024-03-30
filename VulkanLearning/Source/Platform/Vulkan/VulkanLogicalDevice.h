@@ -16,6 +16,7 @@ namespace Violet
 		~VulkanLogicalDevice();
 	public:
 		VkDevice GetHandle() { return m_DeviceHandle; }
+		Ref<VulkanSwapChain> GetSwapChain() { return m_SwapChain; }
 	private:
 		VkDevice m_DeviceHandle;
 		VkQueue m_GraphicsQueueHandle;

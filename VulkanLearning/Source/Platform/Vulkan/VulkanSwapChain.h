@@ -31,6 +31,8 @@ namespace Violet
 		std::vector<VkImage> GetImages() { return m_SwapChainImages; }
 		VkFormat GetFormat() { return m_SwapChainFormat; }
 		VkExtent2D GetExtent() { return m_SwapChainExtent; }
+		VkViewport GetViewport() { return m_Viewport; }
+		VkRect2D GetScissor() { return m_Scissor; }
 	private:
 		VkSurfaceFormatKHR ChooseSwapSurfaceFormat(std::vector<VkSurfaceFormatKHR> p_AvailableFormats);
 		VkPresentModeKHR ChooseSwapPresentationMode(std::vector<VkPresentModeKHR> p_AvailableModes);
@@ -47,6 +49,9 @@ namespace Violet
 		std::vector<VkImageView> m_SwapChainImageViews;
 		VkFormat m_SwapChainFormat;
 		VkExtent2D m_SwapChainExtent;
+	private:
+		VkRect2D m_Scissor;
+		VkViewport m_Viewport;
 	};
 }
 

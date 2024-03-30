@@ -9,6 +9,8 @@
 #include "../Vulkan/VulkanLogicalDevice.h"
 #include "../Vulkan/VulkanPhysicalDevice.h"
 
+#include "../Vulkan/Pipelines/VulkanPipeline.h"
+
 namespace Violet
 {
 	class VulkanRendererAPI : public RendererAPI
@@ -20,6 +22,7 @@ namespace Violet
 		Ref<Window> m_Window;
 		Ref<VulkanInstance> m_Instance;
 		Ref<VulkanLogicalDevice> m_Device;
+		Ref<VulkanPipeline> m_Pipeline;
 	};
 }
 

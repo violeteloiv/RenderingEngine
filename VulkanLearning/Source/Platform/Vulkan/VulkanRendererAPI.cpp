@@ -27,5 +27,7 @@ namespace Violet
 		m_Device = CreateRef<VulkanLogicalDevice>(m_Instance);
 
 		Scope<VulkanShader> shader = CreateScope<VulkanShader>(m_Device, "../VulkanLearning/Shaders/basic.glsl");
+		
+		m_Pipeline = CreateRef<VulkanPipeline>(m_Device);
 	}
 }
