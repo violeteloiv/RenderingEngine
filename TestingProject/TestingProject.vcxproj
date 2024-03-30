@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)$(Platform)\$(Configuration)\VulkanLearning.lib;C:\Development\Dependencies\glfw-3.3.8\glfw-3.3.8.bin.WIN64\lib-vc2022\glfw3.lib;C:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib;%(AdditionalDependencies);C:\VulkanSDK\1.3.261.1\Lib\shaderc_sharedd.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)$(Platform)\$(Configuration)\VulkanLearning.lib;C:\Development\Dependencies\glfw-3.3.8\glfw-3.3.8.bin.WIN64\lib-vc2022\glfw3.lib;C:\VulkanSDK\1.3.261.1\Lib\vulkan-1.lib;%(AdditionalDependencies);C:\VulkanSDK\1.3.261.1\Lib\shaderc_shared.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

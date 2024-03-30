@@ -10,18 +10,22 @@ namespace Violet
 		: m_Device(p_Device), m_FilePath(p_FilePath)
 	{
 		// Read the shader file into a buffer.
-		std::string fileContents = Utils::ReadFile(p_FilePath);
+		std::string fileContents = Utils::ReadTextFile(p_FilePath);
 
 		// Split the buffer into it's shader components.
 		m_ShaderDetails = ParseShader(fileContents);
 
-		// Compile the shaders.
-		m_ShaderDetails.VertexShaderModule = CompileShader(
-			m_ShaderDetails.VertexString, shaderc_vertex_shader, true
-		);
-		m_ShaderDetails.FragmentShaderModule = CompileShader(
-			m_ShaderDetails.FragmentString, shaderc_fragment_shader, true
-		);
+		// TODO: Remove When Shader Compilation Is Figured Out
+		Utils::WriteFile("../VulkanLearning/Shaders/shader.frag", m_ShaderDetails.FragmentString);
+		Utils::WriteFile("../VulkanLearning/Shaders/shader.vert", m_ShaderDetails.VertexString);
+
+		// TODO: Figure Out Automatic Shader Compiling
+
+		auto vertFile = Utils::ReadBinaryFile("../VulkanLearning/Shaders/vert.spv");
+		auto fragFile = Utils::ReadBinaryFile("../VulkanLearning/Shaders/frag.spv");
+
+		m_ShaderDetails.VertexShaderModule = CompileShader(vertFile);
+		m_ShaderDetails.FragmentShaderModule = CompileShader(fragFile);
 
 		// Create the shader stage in the pipeline info.
 		VkPipelineShaderStageCreateInfo vertexShaderStageInfo{};
@@ -46,36 +50,19 @@ namespace Violet
 		vkDestroyShaderModule(m_Device->GetHandle(), m_ShaderDetails.FragmentShaderModule, nullptr);
 	}
 
-	VkShaderModule VulkanShader::CompileShader(std::string p_Source, shaderc_shader_kind p_Type, bool p_Optimize)
+	VkShaderModule VulkanShader::CompileShader(std::vector<char>& p_Code)
 	{
-		shaderc::Compiler compiler;
-		shaderc::CompileOptions options;
-
-		if (p_Optimize)
-			options.SetOptimizationLevel(shaderc_optimization_level_size);
-
-		shaderc::SpvCompilationResult module = compiler.CompileGlslToSpv(
-			p_Source, p_Type, "basic"
-		);
-
-		if (module.GetCompilationStatus() != shaderc_compilation_status_success)
-		{
-			std::cerr << module.GetErrorMessage() << std::endl;
-			throw std::runtime_error("[ERROR] Shader Module Failed To Compile!");
-		}
-
-		std::vector<uint32_t> code = { module.cbegin(), module.cend() };
-
-		VkShaderModule shader;
 		VkShaderModuleCreateInfo createInfo{};
 		createInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
-		createInfo.codeSize = code.size();
-		createInfo.pCode = reinterpret_cast<const uint32_t*>(code.data());
+		createInfo.codeSize = p_Code.size();
+		createInfo.pCode = reinterpret_cast<const uint32_t*>(p_Code.data());
 
-		if (vkCreateShaderModule(m_Device->GetHandle(), &createInfo, nullptr, &shader) != VK_SUCCESS)
-			throw std::runtime_error("[ERROR] Unable To Create Shader Module!");
+		VkShaderModule shaderModule;
+		if (vkCreateShaderModule(m_Device->GetHandle(), &createInfo, nullptr, &shaderModule) != VK_SUCCESS) {
+			throw std::runtime_error("failed to create shader module!");
+		}
 
-		return shader;
+		return shaderModule;
 	}
 
 	ShaderDetails VulkanShader::ParseShader(std::string p_Source)
@@ -130,7 +117,6 @@ namespace Violet
 				std::vector<std::string> words = Violet::Utils::SplitString(p_Lines[i], ' ');
 				if (words[0].compare("#type") == 0)
 				{
-					std::cout << words[1] << std::endl;
 					type = words[1];
 					continue;
 				}

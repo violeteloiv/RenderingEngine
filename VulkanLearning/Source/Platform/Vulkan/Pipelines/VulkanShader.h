@@ -19,8 +19,8 @@ namespace Violet
 		std::string VertexString;
 		std::string FragmentString;
 	public:
-		VkShaderModule VertexShaderModule;
-		VkShaderModule FragmentShaderModule;
+		VkShaderModule VertexShaderModule = NULL;
+		VkShaderModule FragmentShaderModule = NULL;
 	public:
 		std::vector<VkPipelineShaderStageCreateInfo> ShaderStages;
 	};
@@ -33,11 +33,7 @@ namespace Violet
 	public:
 		ShaderDetails GetShaderDetails() { return m_ShaderDetails; }
 	private:
-		VkShaderModule CompileShader(
-			std::string p_Source,
-			shaderc_shader_kind p_Type,
-			bool p_Optimize = false
-		);
+		VkShaderModule CompileShader(std::vector<char>& p_Code);
 	private:
 		ShaderDetails ParseShader(std::string p_Source);
 		std::vector<ChunkStartEnd> GetChunkLocations(std::vector<std::string> p_Lines);

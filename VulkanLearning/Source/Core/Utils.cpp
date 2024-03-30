@@ -7,9 +7,19 @@ namespace Violet
 {
 	namespace Utils
 	{
-		std::string ReadFile(const std::string& p_FileName)
+		std::string ReadTextFile(const std::string& p_FileName)
 		{
-			// Read the file as a binary file and set the cursor pointer to the end of file.
+			std::vector<char> buffer = ReadBinaryFile(p_FileName);
+
+			std::string str = "";
+			for (auto character : buffer)
+				str += character;
+
+			return str;
+		}
+
+		std::vector<char> ReadBinaryFile(const std::string& p_FileName)
+		{
 			std::ifstream file(p_FileName, std::ios::ate | std::ios::binary);
 
 			if (!file.is_open())
@@ -24,14 +34,19 @@ namespace Violet
 			// Read all of the bytes at once.
 			file.read(buffer.data(), fileSize);
 
-			// Close file.
+			// Clode file.
 			file.close();
 
-			std::string str = "";
-			for (auto character : buffer)
-				str += character;
+			return buffer;
 
-			return str;
+		}
+
+		void WriteFile(const std::string& p_FilePath, std::string& p_Data)
+		{
+			// Write to file.
+			std::ofstream file(p_FilePath);
+			file << p_Data;
+			file.close();
 		}
 
 		std::vector<std::string> SplitString(std::string& p_Source, char p_Delimeter)
